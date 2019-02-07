@@ -37,8 +37,6 @@ def generator_primes(twice_the_length):
 	for i in range(100):
 		lol = random.randint(10**num,10**(num+1))
 		val = lol**2 + lol + 3399714628553118047
-		if val%2==0:
-			val+=1
 		if val%5==0:
 			val+=2
 		res = rabin_miller(val)
