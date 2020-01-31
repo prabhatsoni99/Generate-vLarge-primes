@@ -1,51 +1,47 @@
+
 # Generate-vLarge-primes
 
-Our goal is to build a fast method to generate large prime numbers that can be used for cryptographic applications. Size of primes should be >= 1024 bits.
+Our aim is to take humanity ahead! To expand the boundaries of science.
+<br>Our aim is to generate industry-ready primes faster than they are generated today.
 
-Techniques used:
-- Miller-Rabin primality test
-- Ulam's Spiral
-
- # Why do we need large primes?
+# Why do we need large primes?
 They are required in cryptographic protocols like:
 - RSA
 - Diffie-Hellman
 - Elliptic curve cryptography
 
-These techniques rely on the secrecy and large size of prime numbers.
-And, you cannot take your prime numbers from somewhere else - then it would not be secret. Thus, you need to generate these primes using code running on your PC.
+These techniques rely on the secrecy and large size of prime numbers. And, you cannot take your prime numbers from somewhere else - then it would not be secret.
+<br>Thus, you need to generate these primes using code running on your PC.
 
 # Usage
+
+Building the binary:
+<br>```$ make all```
+
 Usage:
-```
-$ python3 generateLargePrimes.py  <desired_length>  <how_many_nums_to_test>
-```
+<br>```$ ./generate1Prime -<total number of bits>```
+
 Example:
-```
-$ python3 generateLargePrimes.py 650 100
-```
-will test 100 numbers of length 650 each.
-Industry standards say we should use 1024+ bit primes.
-Setting the first parameter, i.e. ```desired_length``` to ```650``` achieves that.
+<br>```$ ./generate1Prime -1024```
+
+
+- **Clarification**: The parameter is **total number of bits**, and not **number of bits as 1**.
+- We are generating exactly 1024 bit primes. Nothing less. Nothing more. The reason for this is embedded devices have limited memory and are only able to use primes of exact length.
+- Industry requires primes of some sizes. Some of them are: 384, 512, 1024, 2048, 3072, 4096 bits.
+
+
 
 # Ulam's Spiral
+
+We observe an interesting mathematical pattern - Ulam's Spiral has been excluded from popular crypto libraries. This project will only try to incorporate Ulam's Spiral with well-known library fucntions/implementations of primality testing. Doing this may make prime generation faster - who knows!
+
+
 Would recommend you to watch [Youtube video on Ulam's Spiral](https://www.youtube.com/watch?v=iFuR97YcSLM)
 <br>Ulam's Spiral is basically a distribution of numbers that have high chance of being prime.
 <br>Golden Line is a curve. The y-coordinates of this curve have 20X more chance of being prime than other random numbers.
 <br>Golden Line Equation: ```y = x^2 + x + 3399714628553118047```
 
-# Miller-Rabin Primality Test
-
-[Learn about Miller-Rabin](https://www.geeksforgeeks.org/primality-test-set-3-miller-rabin/)
-
-This comes from Fermat's Little Theorem.
-This technique is non-deterministic, or a pseudo-primality test. This technique is not mathematically perfect; it works in about 99% times.
-<br>Since, it may not necessarily give the correct answer the first time, we can run 5 or 10 tests to test if a given number is prime or not - if the test says it is not prime in any of the tests run, we can reject it.
-<br>Time complexity for a single test: ```O(log^3 n)```
-<br>Time complexity for k tests run: ```O(k  *  log^3 n)```
-
-This technique is very efficient as the time taken to test primality of a number doesn't increase much with the size of the number
 
 This was presented as a Student Talk by me.
-<br>Where: Evariste(math club), IIIT Delhi
+<br>Where: [Evariste (math club)](https://www.reddit.com/r/mathiiitd/wiki/index), IIIT Delhi
 <br>When: January, 2019
